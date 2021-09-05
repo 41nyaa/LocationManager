@@ -2,11 +2,12 @@
 //  ContentView.swift
 //  LocationManager
 //
-//  Created by scho on 2021/09/01.
+//  Created by 41nyaa on 2021/09/01.
 //
 
 import SwiftUI
 import CoreData
+import MapKit
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -23,9 +24,12 @@ struct ContentView: View {
             if self.location.locations.count > 0 {
                 Text(String(self.location.locations.last!.coordinate.latitude))
                 Text(String(self.location.locations.last!.coordinate.longitude))
+            } else {
+                Text("Updating...")
             }
             HStack {
                 Button(action: {
+                    self.location.locations = []
                     self.location.request()
                 }, label: {
                     Text("Update")
@@ -39,9 +43,14 @@ struct ContentView: View {
         }
         List {
             ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                Text(String(item.latitude))
-                Text(String(item.longitude))
+                if item.location != nil {
+                    Text(String(item.location!.coordinate.latitude) +  String(item.location!.coordinate.longitude))
+                        .onTapGesture(perform: {
+                            let map = MKMapItem(placemark: MKPlacemark(coordinate: item.location!.coordinate))
+                            map.name = "Item"
+                            map.openInMaps(launchOptions: nil)
+                        })
+                }
             }
             .onDelete(perform: deleteItems)
         }
@@ -57,11 +66,13 @@ struct ContentView: View {
     }
 
     private func addItem() {
+        guard let location = self.location.locations.last else{
+            return
+        }
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-            newItem.latitude = self.location.locations.last!.coordinate.latitude
-            newItem.longitude = self.location.locations.last!.coordinate.longitude
+            newItem.location = location
 
             do {
                 try viewContext.save()

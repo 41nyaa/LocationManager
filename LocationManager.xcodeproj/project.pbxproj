@@ -14,6 +14,7 @@
 		4935B6F126DF96CA00837F93 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935B6F026DF96CA00837F93 /* Persistence.swift */; };
 		4935B6F426DF96CA00837F93 /* LocationManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4935B6F226DF96CA00837F93 /* LocationManager.xcdatamodeld */; };
 		4935B6FC26DF9D8C00837F93 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935B6FB26DF9D8C00837F93 /* LocationService.swift */; };
+		4953644326E23A14004A0FA4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4953644226E23A14004A0FA4 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4935B6F326DF96CA00837F93 /* LocationManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationManager.xcdatamodel; sourceTree = "<group>"; };
 		4935B6F526DF96CA00837F93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4935B6FB26DF9D8C00837F93 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		4953644226E23A14004A0FA4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4953644326E23A14004A0FA4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +47,7 @@
 			children = (
 				4935B6E626DF96C700837F93 /* LocationManager */,
 				4935B6E526DF96C700837F93 /* Products */,
+				4953644126E23A14004A0FA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +80,14 @@
 				4935B6EE26DF96CA00837F93 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4953644126E23A14004A0FA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4953644226E23A14004A0FA4 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
